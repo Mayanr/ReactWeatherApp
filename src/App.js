@@ -1,22 +1,28 @@
 import React, { Fragment } from 'react';
 import './App.css';
 import ReactDOM from 'react-dom';
-import { IndexRoute  } from 'react-router';
 import { BrowserRouter as  Router, Route, Switch, HashRouter } from 'react-router-dom';
 import Main from "./components/Main";
+import Weather from "./components/Weather";
+import Navbar from "./components/Navbar";
+import About from "./components/About";
+import Examples from "./components/Examples";
 
 
 function App() {
   return (
-    <div className="App">
     <Router history ={HashRouter}>
       <Fragment>
-        <Route path="/" component= {Main}>
-        
-        </Route>
+      <Navbar />
+          <section className = "container">
+          <Switch>
+            <Route exact path="/" component= {Weather}/>
+            <Route exact path="/about" component={About}/>
+            <Route exact path="/examples" component={Examples}/>
+          </Switch>
+          </section>
       </Fragment>
       </Router>
-    </div>
   );
 }
 

@@ -1,17 +1,20 @@
-import React, { Fragment, useEffect} from "react";
-import Navbar from "./Navbar";
+// import React, { Fragment, useEffect} from "react";
+// import Navbar from "./Navbar";
+// import PropTypes from "prop-types";
+
+// import Weather from "./Weather";
+// import { BrowserRouter as  Router, Route, Switch, HashRouter } from 'react-router-dom';
 
 
 
-const Main =()=> {
-    return(
-        <div>
-            <Navbar />
-            <h1 className = "main">
-                well, hello there! This is the main component!
-            </h1>
-        </div>
-    )
-}
+// const Main =()=> {
+//     return(
+//         <Fragment>
+//             <Navbar />
+//             {/* {this.props.children} */}
+          
+//         </Fragment>
+//     )
+// }
 
-export default Main;
+// export default Main;
