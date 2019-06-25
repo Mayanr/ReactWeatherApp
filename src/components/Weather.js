@@ -50,8 +50,8 @@ class Weather extends Component {
 
         return (
             <Fragment>
-                <h3> Weather Component</h3>
-                <section className = "container">
+                <h3  className ="lead"> Search a Location</h3>
+                <section className = "container searchBox">
                     <WeatherForm onSearch={this.handleSearch}/>
                     {renderMessage()}
                     {/* <WeatherMessage temp={temp} loc={loc}/> */}

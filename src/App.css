@@ -165,3 +165,23 @@ img {
   position: relative;
   height: 100vh;
 }
+
+.searchBox  {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+button {
+  background-color: darkslategrey;
+  padding: 5px;
+  color: white;
+}
+
+.bulleted{
+  list-style: circle;
+  padding: 3% 5% ;
+}
