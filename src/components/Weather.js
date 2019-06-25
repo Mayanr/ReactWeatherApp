@@ -9,23 +9,27 @@ class Weather extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loc: "Miami",
-            temp: 88
+            isLoading: false
+            // loc: "Miami",
+            // temp: 88
       }
     };
     handleSearch=(loc)=> {
         var that = this;
-        // alert(loc);
-        // console.log("a message from handleSearch", loc);
-        console.log(openWeatherMap.getTemp(loc));
+
+        this.setState({isLoading: true});
         openWeatherMap.getTemp(loc).then(temp =>{
             that.setState({
                 loc: loc,
-                temp: temp
+                temp: temp,
+                isLoading: false
             });
-        }, (errorMessage =>{
+        }).catch (errorMessage =>{
             alert(errorMessage);
-        }))
+            that.setState({
+                isLoading: false
+            });
+        })
         // this.setState({
         //     loc: loc,
         //     temp: 23
@@ -34,13 +38,23 @@ class Weather extends Component {
 
 
     render(){
-        var { loc, temp } = this.state;
+        var { isLoading, loc, temp } = this.state;
+
+        const renderMessage=()=>{
+            if(isLoading){
+                return <h3> Fetching weather...</h3>;
+            } else if(temp && loc){
+                return <WeatherMessage temp={temp} loc={loc}/>;
+            }
+        }
+
         return (
             <Fragment>
                 <h3> Weather Component</h3>
                 <section className = "container">
                     <WeatherForm onSearch={this.handleSearch}/>
-                    <WeatherMessage temp={temp} loc={loc}/>
+                    {renderMessage()}
+                    {/* <WeatherMessage temp={temp} loc={loc}/> */}
                 </section>
             </Fragment>
         )
