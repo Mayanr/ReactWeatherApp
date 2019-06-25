@@ -2,6 +2,7 @@ import React, { Fragment, Component } from "react";
 import { Link } from "react-router-dom";
 import WeatherForm from "./WeatherForm";
 import WeatherMessage from "./WeatherMessage";
+import openWeatherMap from "../api/openWeatherMap"
 
 
 class Weather extends Component {
@@ -13,8 +14,18 @@ class Weather extends Component {
       }
     };
     handleSearch=(loc)=> {
-        alert(loc);
-        console.log("a message from handleSearch", loc);
+        var that = this;
+        // alert(loc);
+        // console.log("a message from handleSearch", loc);
+        console.log(openWeatherMap.getTemp(loc));
+        openWeatherMap.getTemp(loc).then(temp =>{
+            that.setState({
+                loc: loc,
+                temp: temp
+            });
+        }, (errorMessage =>{
+            alert(errorMessage);
+        }))
         // this.setState({
         //     loc: loc,
         //     temp: 23
